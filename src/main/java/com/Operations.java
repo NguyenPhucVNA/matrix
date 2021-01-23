@@ -1,7 +1,7 @@
 package com;
 
 public class Operations extends Matrix implements Calculation,Transpose{
-
+    private double [] temp;
     @Override
     public void multiplyByConstant() {
         initMatrix();
@@ -72,16 +72,48 @@ public class Operations extends Matrix implements Calculation,Transpose{
         }
         printMatrix(getMatrixA());
     }
-
+    //helper method
+    private void checkLen(int hor){
+        if(getRow()!=getCol()){
+            for (int ver = 0; ver < getRow(); ver++) {
+                temp[ver] = getMatrix()[ver][hor];
+            }
+        }
+        else{
+            for (int ver = 0; ver < getRow(); ver++) {
+                temp[ver] = getMatrix()[hor][ver];
+            }
+        }
+    }
     @Override
     public void verticalTranspose() {
+        initMatrix();
+        setMatrixA(new double[getCol()][getRow()]);
+        temp = new double[getRow()];
+        for(int hor=0; hor<getCol();hor++){
+                checkLen(hor);
+            for (int ver = 0; ver < getRow(); ver++) {
+                getMatrixA()[hor][ver] = temp[getRow()-ver-1];
+            }
+        }
+        printMatrix(getMatrixA());
 
     }
 
     @Override
     public void horizontalTranspose() {
-
+        initMatrix();
+        setMatrixA(new double[getCol()][getRow()]);
+        temp = new double[getRow()];
+        for(int hor=0; hor<getCol();hor++){
+            checkLen(hor);
+            for (int ver = 0; ver < getRow(); ver++) {
+                getMatrixA()[getCol()-1-hor][ver] = temp[ver];
+            }
+        }
+        printMatrix(getMatrixA());
     }
+
     private void printMatrix(double[][] matrix) {
         int row = matrix.length;
         int column = matrix[0].length;

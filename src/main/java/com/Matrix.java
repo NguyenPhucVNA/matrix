@@ -11,7 +11,9 @@ public class Matrix {
     private int colA;
     private int colB;
     private int col;
-
+    private double[][] matrixA;
+    private double[][] matrixB;
+    private double[][] matrix;
     public double[][] getMatrixA() {
         return matrixA;
     }
@@ -32,9 +34,7 @@ public class Matrix {
         this.matrix = matrix;
     }
 
-    private double[][] matrixA;
-    private double[][] matrixB;
-    private double[][] matrix;
+
 
 
     public int getRowA() {
