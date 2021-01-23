@@ -24,7 +24,7 @@ public class Operations extends Matrix implements Calculation,Transpose{
         } else
             for (int row = 0; row < getRowA(); row++) {
                 for (int column = 0; column < getColA(); column++) {
-                    getMatrix()[row][column] += getMatrixB()[row][column];
+                    getMatrixA()[row][column] += getMatrixB()[row][column];
                 }
             }
         printMatrix(getMatrixA());
